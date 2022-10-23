@@ -5,7 +5,6 @@ import { useRouter } from "next/router";
 export default function SearchPanel() {
   const [searchTerm, setSearchTerm] = useState("");
   const router = useRouter();
-  console.log(router);
 
   async function search() {
     const data = await getSearchResults(searchTerm.split(" "));
@@ -13,27 +12,28 @@ export default function SearchPanel() {
     data.forEach((result) => {
       queryObj[result.id] = result.matches;
     });
-    if (router.pathname == "/search") {
-      router.replace(
-        {
-          pathname: "/search/",
+    console.log("search");
+    // if (router.pathname == "/search") {
+    //   router.replace(
+    //     {
+    //       pathname: "/search/",
 
-          query: queryObj,
-        },
-        undefined,
-        { shallow: false }
-      );
-    } else {
-      router.push(
-        {
-          pathname: "/search/",
+    //       query: queryObj,
+    //     },
+    //     undefined,
+    //     { shallow: false }
+    //   );
+    // } else {
+    router.push(
+      {
+        pathname: "/search/",
 
-          query: queryObj,
-        },
-        undefined,
-        { shallow: false }
-      );
-    }
+        query: queryObj,
+      },
+      undefined,
+      { shallow: false }
+    );
+    // }
     // if (router.pathname == "/search" router.reload(window.location.pathname);
   }
 

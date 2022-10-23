@@ -12,6 +12,7 @@ export default function Search() {
   const [concepts, setConcepts] = useState();
   const [isLoading, setIsLoading] = useState(true);
   const [query, setQuery] = useState();
+  const [resetQuery, setResetQuery] = useState(false);
   async function getConcepts() {
     const data = await getConceptsByIds(sorted);
     const queryObj = {};
@@ -23,9 +24,16 @@ export default function Search() {
   }
 
   useEffect(() => {
-    if (query != router.query) {
+    //NOTE - Next.js will not fully reload unless we check for new query params
+    if (!resetQuery && query != router.query) {
+      setResetQuery(true);
       setSorted(null);
       setQuery(router.query);
+    } else if (resetQuery) {
+      if (sorted) setSorted(null);
+      if (concepts) setConcepts(null);
+      if (!isLoading) setIsLoading(true);
+      if (resetQuery) setResetQuery(false);
     } else {
       if (!sorted) {
         let queryKeys = Object.keys(router.query);
@@ -45,7 +53,7 @@ export default function Search() {
       }
       if (concepts && sorted) setIsLoading(false);
     }
-  }, [sorted, concepts, query]);
+  }, [sorted, concepts, query, resetQuery, isLoading, router.query]);
 
   return (
     <main className={styles.main}>
