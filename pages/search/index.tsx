@@ -1,7 +1,6 @@
 import { Container, Title, UnstyledButton } from "@mantine/core";
 import Link from "next/link";
 import router from "next/router";
-import Router from "next/router";
 import { useEffect, useState } from "react";
 import SearchPanel from "../../components/SearchPanel";
 import { getConceptsByIds } from "../../services/services";
@@ -13,14 +12,19 @@ export default function Search() {
   const [isLoading, setIsLoading] = useState(true);
   const [query, setQuery] = useState();
   const [resetQuery, setResetQuery] = useState(false);
+
   async function getConcepts() {
-    const data = await getConceptsByIds(sorted);
-    const queryObj = {};
-    data.forEach((concept) => {
-      queryObj[concept.conceptId] = concept;
-    });
-    const sortedData = sorted.map((element) => queryObj[element]);
-    setConcepts(sortedData);
+    try {
+      const data = await getConceptsByIds(sorted);
+      const queryObj = {};
+      data.forEach((concept) => {
+        queryObj[concept.conceptId] = concept;
+      });
+      const sortedData = sorted.map((element) => queryObj[element]);
+      setConcepts(sortedData);
+    } catch (e) {
+      console.log(e);
+    }
   }
 
   useEffect(() => {

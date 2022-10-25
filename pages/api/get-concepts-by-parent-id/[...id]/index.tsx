@@ -1,11 +1,4 @@
-// Next.js API route support: https://nextjs.org/docs/api-routes/introduction
-import type { NextApiRequest, NextApiResponse } from "next";
 import { mockData } from "../../../../mockData";
-
-type Data = {
-  name: string;
-};
-export default handler;
 
 function handler(req: any, res: any) {
   switch (req.method) {
@@ -18,18 +11,8 @@ function handler(req: any, res: any) {
       return res.status(500);
 
     default:
-      return res.status(405).end(`Method ${req.method} Not Allowed`);
+      return res.end(`Method ${req.method} Not Allowed`);
   }
-}
-
-export function filterByConceptIds(data: any, ids: String[] | number[]) {
-  let concepts = [];
-  data.forEach((concept) => {
-    ids.forEach((id) => {
-      if (concept.conceptId == id) concepts.push(concept);
-    });
-  });
-  return concepts;
 }
 
 function filterByParentId(
@@ -50,3 +33,5 @@ function filterByParentId(
   });
   return results;
 }
+
+export default handler;

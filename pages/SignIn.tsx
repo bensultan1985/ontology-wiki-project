@@ -1,6 +1,5 @@
 import {
   TextInput,
-  Checkbox,
   Button,
   Group,
   Box,
@@ -9,7 +8,6 @@ import {
 } from "@mantine/core";
 import { useForm } from "@mantine/form";
 import { getLocationOrigin } from "next/dist/shared/lib/utils";
-import Link from "next/link";
 import { useState } from "react";
 import styles from "../styles/Home.module.css";
 const emailValidityBasic = /^\S+@\S+$/;

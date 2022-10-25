@@ -3,7 +3,6 @@ import { Footer, Text, Anchor } from "@mantine/core";
 export function AppFooter() {
   return (
     <Footer
-      sx={(theme) => ({})}
       style={{ background: "lightgray" }}
       height="auto"
       fixed

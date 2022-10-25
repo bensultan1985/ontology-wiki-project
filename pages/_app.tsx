@@ -9,7 +9,7 @@ import {
 } from "@mantine/core";
 import { AppHeader } from "../components/AppHeader";
 import { AppFooter } from "../components/AppFooter";
-import { SessionProvider } from "../context/sessionContext";
+import { UserProvider } from "../context/UserProvider";
 export default function App({
   Component,
   pageProps: { theme, ...pageProps },
@@ -25,14 +25,7 @@ export default function App({
         <meta name="description" content="this is a website" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <SessionProvider.Provider
-        value={{
-          email: "test@test.com",
-          name: "Ben Sultan",
-          role: "admin",
-          token: "3d9f032",
-        }}
-      >
+      <UserProvider>
         <MantineProvider withGlobalStyles withNormalizeCSS theme={theme}>
           <AppShell
             fixed={true}
@@ -45,7 +38,7 @@ export default function App({
             </Container>
           </AppShell>
         </MantineProvider>
-      </SessionProvider.Provider>
+      </UserProvider>
     </>
   );
 }

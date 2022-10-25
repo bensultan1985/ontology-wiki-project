@@ -1,18 +1,10 @@
-// Next.js API route support: https://nextjs.org/docs/api-routes/introduction
-import type { NextApiRequest, NextApiResponse } from "next";
 import { mockData } from "../../../../mockData";
-
-type Data = {
-  name: string;
-};
-export default handler;
 
 function handler(req: any, res: any) {
   switch (req.method) {
     case "GET":
       //TODO: cleanup verifying null
       //may not be needed here
-      //   console.log(req.query.query, "query");
       if (!req.query.query) res.status(401);
       const query = req.query.query;
       const data = searchFor(mockData, query);
@@ -21,7 +13,7 @@ function handler(req: any, res: any) {
       return res.status(500);
 
     default:
-      return res.status(405).end(`Method ${req.method} Not Allowed`);
+      return res.end(`Method ${req.method} Not Allowed`);
   }
 }
 
@@ -39,7 +31,6 @@ export function searchFor(mockData, query: string) {
     query.forEach((q) => {
       //   var regex = new RegExp("w*" + q, "g");
       let arr = str.split(" ");
-      console.log(arr);
       arr.forEach((word) => {
         if (word == q) matchArr.push(word);
       });
@@ -49,3 +40,5 @@ export function searchFor(mockData, query: string) {
   });
   return matches;
 }
+
+export default handler;

@@ -1,5 +1,4 @@
-import { Title, Button } from "@mantine/core";
-import { useRouter } from "next/router";
+import { Title } from "@mantine/core";
 import { useEffect, useState } from "react";
 import { getConceptsByParentId } from "../services/services";
 import { RootConceptLink } from "./RootConceptLink";
@@ -9,22 +8,21 @@ export function UserConsole() {
   const [concepts, setConcepts] = useState([{}]);
   const [isLoading, setIsLoading] = useState(true);
 
-  const router = useRouter();
-
   useEffect(() => {
     if (isLoading) {
       getConcepts();
     } else {
       if (concepts.length == 1) {
       }
-      // router.push("/concept/" + concepts[0].conceptId);
     }
   }, [concepts]);
 
   async function getConcepts() {
-    const data = await getConceptsByParentId(null);
-    setConcepts(data);
-    setIsLoading(false);
+    try {
+      const data = await getConceptsByParentId(null);
+      setConcepts(data);
+      setIsLoading(false);
+    } catch (e) {}
   }
 
   return (

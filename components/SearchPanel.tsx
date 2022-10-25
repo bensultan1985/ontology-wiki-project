@@ -12,18 +12,7 @@ export default function SearchPanel() {
     data.forEach((result) => {
       queryObj[result.id] = result.matches;
     });
-    console.log("search");
-    // if (router.pathname == "/search") {
-    //   router.replace(
-    //     {
-    //       pathname: "/search/",
 
-    //       query: queryObj,
-    //     },
-    //     undefined,
-    //     { shallow: false }
-    //   );
-    // } else {
     router.push(
       {
         pathname: "/search/",
@@ -33,8 +22,6 @@ export default function SearchPanel() {
       undefined,
       { shallow: false }
     );
-    // }
-    // if (router.pathname == "/search" router.reload(window.location.pathname);
   }
 
   return (
@@ -42,8 +29,8 @@ export default function SearchPanel() {
       <Box>
         <Container
           fluid
-          //   py={"lg"}
           my={"lg"}
+          //   p={"sm"}
           style={{
             border: "solid",
             borderColor: "lightgray",
@@ -51,15 +38,22 @@ export default function SearchPanel() {
             borderRadius: "5px",
           }}
         >
-          <TextInput
-            placeholder="search term..."
-            style={{ display: "inline-block" }}
-            value={searchTerm}
-            onChange={(event) => setSearchTerm(event.currentTarget.value)}
-          ></TextInput>
-          <Button m={"lg"} onClick={() => search()}>
-            search
-          </Button>
+          <form
+            onSubmit={(e) => {
+              e.preventDefault();
+              search();
+            }}
+          >
+            <TextInput
+              placeholder="search term..."
+              style={{ display: "inline-block" }}
+              value={searchTerm}
+              onChange={(event) => setSearchTerm(event.currentTarget.value)}
+            ></TextInput>
+            <Button m={"lg"} mr={0} onClick={() => search()}>
+              search
+            </Button>
+          </form>
         </Container>
       </Box>
     </>

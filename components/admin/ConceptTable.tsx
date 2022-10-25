@@ -11,10 +11,13 @@ export default function ConceptTable(props) {
   const [editConcept, setEditConcept] = useState();
 
   async function getConcepts() {
-    const response = await getAllConcepts();
-    // return;
-    setLoading(false);
-    setConcepts(response);
+    try {
+      const response = await getAllConcepts();
+      setLoading(false);
+      setConcepts(response);
+    } catch (e) {
+      console.log(e);
+    }
   }
 
   function openEditModal() {
@@ -81,14 +84,12 @@ export default function ConceptTable(props) {
           concept={editConcept}
           setOpenModal={setOpenModal}
         ></EditConceptModal>
-        {/* Modal content */}
       </Modal>
       <Title>Concepts</Title>
       <Table captionSide="bottom">
         <caption>Admin Console</caption>
         <thead>{ths}</thead>
         <tbody>{rows && rows}</tbody>
-        {/* <tfoot>{ths}</tfoot> */}
       </Table>
     </>
   );

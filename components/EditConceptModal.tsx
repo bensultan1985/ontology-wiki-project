@@ -2,42 +2,47 @@ import {
   Box,
   Button,
   Group,
-  Modal,
   MultiSelect,
   Textarea,
   TextInput,
-  Title,
 } from "@mantine/core";
 import { useEffect, useState } from "react";
 import { useForm } from "@mantine/form";
-import { getAllConcepts } from "../services/services";
-import router, { Router } from "next/router";
+import {
+  createConcept,
+  getAllConcepts,
+  updateConcept,
+} from "../services/services";
 
 export function EditConceptModal(props) {
   const { openModal, setOpenModal, concept } = props;
-  const [data, setData] = useState([]);
   const [alternateNamesSelect, setAlternateNamesSelect] = useState([]);
   const [allConcepts, setAllConcepts] = useState();
 
-  async function getConcepts() {
-    const response = await getAllConcepts();
+  //removes concept from list of possible parent concepts and child concepts
+  function filterConceptIds(currentConcept) {
+    return currentConcept.conceptId != concept.conceptId;
+  }
 
-    function mapConceptIds(currentConcept) {
-      if (currentConcept.conceptId != concept.conceptId)
-        return {
-          label: currentConcept.conceptId,
-          value: currentConcept.conceptId,
-        };
+  async function getConcepts() {
+    try {
+      const response = await getAllConcepts();
+      function mapConceptIds(currentConcept) {
+        if (currentConcept.conceptId != concept.conceptId)
+          return {
+            label: currentConcept.conceptId,
+            value: currentConcept.conceptId,
+          };
+      }
+      const filteredArr = response.filter(filterConceptIds);
+      setAllConcepts(filteredArr.map(mapConceptIds));
+    } catch (e) {
+      console.log(e);
     }
-    //removes concept from list of possible parent concepts and child concepts
-    function filterConceptIds(currentConcept) {
-      return currentConcept.conceptId != concept.conceptId;
-    }
-    const filteredArr = response.filter(filterConceptIds);
-    setAllConcepts(filteredArr.map(mapConceptIds));
   }
   useEffect(() => {
     if (!allConcepts) getConcepts();
+    if (allConcepts) setAlternateNamesSelect(concept.alternateNames);
   }, [allConcepts]);
 
   const form = useForm({
@@ -47,12 +52,11 @@ export function EditConceptModal(props) {
       parentIds: concept.parentIds ? concept.parentIds : [],
       childIds: concept.childIds ? concept.childIds : [],
       description: concept.description ? concept.description : "",
-      //TODO: if id is null, this will signal post instead of update in the backend
+      //TODO: if id is null, this should signal post instead of update in the backend
       id: concept.conceptId ? concept.conceptId : "none",
     },
     validate: {
       //TODO
-      // email: (value) => (/^\S+@\S+$/.test(value) ? null : "Invalid email"),
     },
   });
 
@@ -61,15 +65,14 @@ export function EditConceptModal(props) {
       <Box mx="auto">
         {allConcepts && (
           <form
-            onSubmit={form.onSubmit((values) => {
-              console.log("submit values", values);
-              //TODO: uncomment for rerender after form is submitted - updating the current concept page
-              // router.push(
-              //   "/concept/" +
-              //     concept.conceptId +
-              //     "/" +
-              //     encodeURIComponent("refresh")
-              // );
+            onSubmit={form.onSubmit(async (values) => {
+              if (values.id == "none") {
+                const response = await createConcept(values);
+                console.log(response);
+              } else {
+                const response = await updateConcept(values);
+                console.log(response);
+              }
               setOpenModal(false);
             })}
           >
@@ -99,7 +102,7 @@ export function EditConceptModal(props) {
             ></MultiSelect>
             <MultiSelect
               mb={"md"}
-              data={concept.alternateNames ? concept.alternateNames : []}
+              data={alternateNamesSelect ? alternateNamesSelect : []}
               label={"alternate names"}
               description={
                 "improve search results by providing alternate names for this concept"
@@ -110,7 +113,7 @@ export function EditConceptModal(props) {
               getCreateLabel={(query) => `+ Create ${query}`}
               onCreate={(query) => {
                 const item = { value: query, label: query };
-                setData((current) => [...current, item]);
+                setAlternateNamesSelect((current) => [...current, item]);
                 return item;
               }}
               {...form.getInputProps("alternateNames")}
