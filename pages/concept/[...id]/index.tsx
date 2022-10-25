@@ -90,74 +90,70 @@ const Concept: NextPage = (props) => {
           openModal={openModal}
           setOpenModal={setOpenModal}
         ></EditConceptModal>
-        {/* Modal content */}
       </Modal>
-      <SimpleGrid
-        // m={0}
-        // p={0}
-        cols={1}
-        style={{ height: "100%", width: "100%" }}
-      >
+      <SimpleGrid cols={1} style={{ height: "100%", width: "100%" }}>
         <div>
-          <div
-            style={{
-              background: "white",
-              borderBottom: "solid",
-              borderColor: "navy",
-              margin: "0px 20px",
-            }}
-          >
-            {user && user.role == "admin" && (
-              <div
-                onClick={() => {
-                  openEditModal();
-                }}
-                style={{ textAlign: "right", cursor: "pointer" }}
-              >
-                [edit]
-              </div>
-            )}
+          <div>
+            <div
+              style={{
+                background: "white",
+                borderBottom: "solid",
+                borderColor: "navy",
+                margin: "0px 20px",
+              }}
+            >
+              {user && user.role == "admin" && (
+                <div
+                  onClick={() => {
+                    openEditModal();
+                  }}
+                  style={{ textAlign: "right", cursor: "pointer" }}
+                >
+                  [edit]
+                </div>
+              )}
 
-            <Title m="sm" p="sm">
-              {concept && concept.displayName}
-            </Title>
-          </div>
-          <Container
-            style={{
-              width: "100%",
-              background: "white",
-              height: "100%",
-            }}
-          >
-            <Container>
-              <Container p="xl" mx="xl">
-                <p>{concept && concept.description}</p>
+              <Title m="sm" p="sm">
+                {concept && concept.displayName}
+              </Title>
+            </div>
+            <Container
+              style={{
+                width: "100%",
+                background: "white",
+                height: "100%",
+              }}
+            >
+              <Container>
+                <Container p="xl" mx="xl">
+                  <p>{concept && concept.description}</p>
+                </Container>
               </Container>
             </Container>
-          </Container>
-        </div>
-        <div style={{ position: "relative" }}>
-          <Container px="xl" mx="xl">
-            <Container mb={60}>
-              {conceptChildren && conceptChildren.length > 0 && (
-                <Container pb={"lg"}>
-                  <Title order={5}>learn more:</Title>
-                  {conceptChildren.map((concept, i) => (
-                    <ConceptLink concept={concept} key={i}></ConceptLink>
-                  ))}
-                </Container>
-              )}
-              {conceptParents && conceptParents.length > 0 && (
-                <Container>
-                  <Title order={5}>related topics:</Title>
-                  {conceptParents &&
-                    conceptParents.map((concept, i) => (
+          </div>
+          <div style={{ position: "relative" }}>
+            <Container px="xl" mx="xl">
+              <Container mb={60}>
+                {conceptChildren && conceptChildren.length > 0 && (
+                  <Container pb={"lg"}>
+                    <Title order={5}>learn more:</Title>
+                    {conceptChildren.map((concept, i) => (
                       <ConceptLink concept={concept} key={i}></ConceptLink>
                     ))}
-                </Container>
-              )}
+                  </Container>
+                )}
+                {conceptParents && conceptParents.length > 0 && (
+                  <Container>
+                    <Title order={5}>related topics:</Title>
+                    {conceptParents &&
+                      conceptParents.map((concept, i) => (
+                        <ConceptLink concept={concept} key={i}></ConceptLink>
+                      ))}
+                  </Container>
+                )}
+              </Container>
             </Container>
-          </Container>
+          </div>
         </div>
       </SimpleGrid>
     </main>

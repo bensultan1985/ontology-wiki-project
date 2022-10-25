@@ -2,7 +2,11 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 ## Important Project Information
 
-Project for Regeneron. The Ontology Department needs CRUD ability and viewing ability for dataset of clinical concepts. This application displays this data in a customizable wiki format. Existing clinical concepts can be edited in the regular viewing portal. Clinical concepts can also be created and/or edited in the admin portal, located at baseUrl + /admin (example: http://localhost:3000/admin). Login as an admin to access this functionality.
+Project for Regeneron. Task: The Ontology Department needs CRUD and viewing abilities for dataset of clinical concepts.
+
+This application displays data in a customizable wiki format. Existing clinical concepts can be edited in the regular viewing portal if a user has the role of "admin". Clinical concepts can also be created and/or edited in the admin portal, located at baseUrl + /admin (example: http://localhost:3000/admin). Login as an admin to access this functionality.
+
+This app was built with Next.js, Node, React, TypeScript, and Mantine (for components and theming).
 
 ## Known Issues
 
@@ -23,6 +27,12 @@ Project for Regeneron. The Ontology Department needs CRUD ability and viewing ab
 -I would use Mantine's notification components to notify the user with error and success messages.
 
 -With TypeScript, I would create proper Types for the data, to ensure that data comes in as expected.
+
+-Separate out large components into cleaner, smaller components.
+
+-Organize style data to create an app that is more thematically customizable.
+
+-The concept edit modal allows parentIds and child Ids to be linked to concepts, but ideally, we would link these by display name instead of the actual IDs. This is more user friendly.
 
 ## Getting Started
 
