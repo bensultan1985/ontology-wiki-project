@@ -26,36 +26,37 @@ export default function SearchPanel() {
 
   return (
     <>
-      <Box>
-        <Container
-          fluid
-          my={"lg"}
-          //   p={"sm"}
-          style={{
-            border: "solid",
-            borderColor: "lightgray",
-            background: "whitesmoke",
-            borderRadius: "5px",
-          }}
-        >
-          <form
-            onSubmit={(e) => {
-              e.preventDefault();
-              search();
+      <div style={{ maxWidth: "326px" }}>
+        <Box>
+          <Container
+            my={"lg"}
+            style={{
+              border: "solid",
+              borderColor: "lightgray",
+              background: "whitesmoke",
+              borderRadius: "5px",
             }}
           >
-            <TextInput
-              placeholder="search term..."
-              style={{ display: "inline-block" }}
-              value={searchTerm}
-              onChange={(event) => setSearchTerm(event.currentTarget.value)}
-            ></TextInput>
-            <Button m={"lg"} mr={0} onClick={() => search()}>
-              search
-            </Button>
-          </form>
-        </Container>
-      </Box>
+            {" "}
+            <form
+              onSubmit={(e) => {
+                e.preventDefault();
+                search();
+              }}
+            >
+              <TextInput
+                placeholder="search term..."
+                style={{ display: "inline-block" }}
+                value={searchTerm}
+                onChange={(event) => setSearchTerm(event.currentTarget.value)}
+              ></TextInput>
+              <Button m={"lg"} mr={0} onClick={() => search()}>
+                search
+              </Button>
+            </form>
+          </Container>
+        </Box>
+      </div>
     </>
   );
 }

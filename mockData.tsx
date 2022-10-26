@@ -80,7 +80,7 @@ export const mockData = [
     description:
       "Medications, therapy, and habits for recovery from illnesses and conditions.",
     parentIds: [1],
-    childIds: [],
+    childIds: null,
     alternateNames: null,
   },
   {
@@ -168,7 +168,7 @@ export const mockData = [
     conceptId: 12,
     displayName: "Diagnosing Cirrhosis",
     description:
-      "Click a link in the 'learn more' section below for information on diagnostic procedures for fatty liver disease.",
+      "Click a link in the 'learn more' section below for information on diagnostic procedures for cirrhosis disease.",
     parentIds: [9],
     childIds: [11],
     alternateNames: null,

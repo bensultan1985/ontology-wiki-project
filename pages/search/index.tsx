@@ -61,8 +61,9 @@ export default function Search() {
 
   return (
     <main className={styles.main}>
-      <div>Results</div>
       <SearchPanel></SearchPanel>
+      <div>Results</div>
+
       <Container>
         {concepts &&
           concepts.map((concept, i) => (
