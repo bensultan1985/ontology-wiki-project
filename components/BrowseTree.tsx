@@ -66,7 +66,6 @@ export default function BrowseTree(props) {
         nodeId={nodes.id}
         label={nodes.name}
         count={count}
-        children={nodes.children}
         content={
           nodes &&
           nodes?.children?.length >= 1 &&
@@ -75,7 +74,7 @@ export default function BrowseTree(props) {
             : null
         }
       >
-        {/* {getDash(count) + nodes.name} */}
+        {nodes.children}
       </CollapseLink>
     );
   };
