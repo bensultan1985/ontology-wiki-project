@@ -1,6 +1,6 @@
 // eslint-disable-file no-use-before-define
 
-import { Title } from "@mantine/core";
+import { Divider, Title } from "@mantine/core";
 import { useEffect, useState } from "react";
 import { getAllConcepts, getConceptsByParentId } from "../services/services";
 import BrowseTree from "./BrowseTree";
@@ -34,6 +34,7 @@ export function UserConsole() {
         <Title>Ontology Wiki</Title>
         <div style={{ width: "100%", margin: "auto" }}>
           <SearchPanel></SearchPanel>
+          <Divider mb="xl"></Divider>
         </div>
       </div>
       {/* <Title order={5}>Browse:</Title> */}

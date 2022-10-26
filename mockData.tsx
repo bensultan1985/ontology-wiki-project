@@ -80,7 +80,7 @@ export const mockData = [
     description:
       "Medications, therapy, and habits for recovery from illnesses and conditions.",
     parentIds: [1],
-    childIds: null,
+    childIds: [20, 27],
     alternateNames: null,
   },
   {
@@ -153,7 +153,7 @@ export const mockData = [
       "Click a link in the 'learn more' section below for information on diagnostic procedures for fatty liver disease.",
     parentIds: [9],
     childIds: [11],
-    alternateNames: null,
+    alternateNames: ["enzyme", "elevated liver enzyme"],
   },
   {
     conceptId: 11,
@@ -162,7 +162,7 @@ export const mockData = [
       "A liver function test is one of a group of tests that check levels of certain enzymes and other proteins in your blood.\n\nSome of the tests look for enzymes that you’d find in your blood only when your liver is damaged or has a disease. Others check that the organ is working the way it should.",
     parentIds: [10],
     childIds: null,
-    alternateNames: null,
+    alternateNames: ["blood test"],
   },
   {
     conceptId: 12,
@@ -225,6 +225,95 @@ export const mockData = [
       "A doctor can determine if you have hepatitis A by discussing your symptoms and ordering a blood test that can tell whether you have been recently infected with the virus that causes hepatitis A.",
     parentIds: [9],
     childIds: [17],
+    alternateNames: null,
+  },
+  {
+    conceptId: 20,
+    displayName: "Treating Diseases of the Eye",
+    description:
+      "Eye diseases can cause discomfort and create further complications. Learn more in the links below about possible treatments.",
+    parentIds: [3],
+    childIds: [21, 22, 23],
+    alternateNames: null,
+  },
+  {
+    conceptId: 21,
+    displayName: "Treating Glaucoma",
+    description:
+      "A doctor can determine if you have hepatitis A by discussing your symptoms and ordering a blood test that can tell whether you have been recently infected with the virus that causes hepatitis A.",
+    parentIds: [20],
+    childIds: [26],
+    alternateNames: null,
+  },
+  {
+    conceptId: 22,
+    displayName: "Treating Cataracts",
+    description: "",
+    parentIds: [20],
+    childIds: [26],
+    alternateNames: null,
+  },
+  {
+    conceptId: 23,
+    displayName: "Treating Dry Eye Syndrome",
+    description:
+      "A doctor can determine if you have hepatitis A by discussing your symptoms and ordering a blood test that can tell whether you have been recently infected with the virus that causes hepatitis A.",
+    parentIds: [20],
+    childIds: [24, 25],
+    alternateNames: null,
+  },
+  {
+    conceptId: 24,
+    displayName: "Eye Drops",
+    description:
+      "Libricating eye drops can provide temporary relief for several eye discomforts, including dry eye syndrome. In addition to standard eye drops, if discomfort persists, patients can apply eye gel at night.",
+    parentIds: [23],
+    childIds: null,
+    alternateNames: null,
+  },
+  {
+    conceptId: 25,
+    displayName: "Tear Duct Plugs",
+    description:
+      "To conserve moisture on the surface of the eye, your opthalmologist can insert small plugs in your tear ducts that slow the draining of your natural tears. This is a non-invasive procedure and can be very effective.",
+    parentIds: [23],
+    childIds: null,
+    alternateNames: null,
+  },
+  {
+    conceptId: 26,
+    displayName: "Laser Surgery",
+    description:
+      "Surgeons can use advanced equipment to perform seveal kinds of laser surgeries to improve vision. This includes procedures to remove cataracts, as well as cosmetic procedures such as LASIK.",
+    parentIds: [21],
+    childIds: null,
+    alternateNames: null,
+  },
+  {
+    conceptId: 27,
+    displayName: "Treating Diseases of the Liver",
+    description:
+      "Surgeons can use advanced equipment to perform seveal kinds of laser surgeries to improve vision. This includes procedures to remove cataracts, as well as cosmetic procedures such as LASIK.",
+    parentIds: [3],
+    childIds: [28, 29],
+    alternateNames: null,
+  },
+  {
+    conceptId: 28,
+    displayName: "Treating Fatty Liver Disease",
+    description:
+      "Fatty Liver can be treated and reversed in several ways. Healthy diet and exercise will contribute to better cholesterol levels and the reduction of liver enzyme. Lipid-lowering drugs can also be prescribed in some cases.",
+    parentIds: [27],
+    childIds: null,
+    alternateNames: null,
+  },
+  {
+    conceptId: 29,
+    displayName: "Treating Cirrhosis",
+    description:
+      "This disease cannot be cured but treating Cirrhosis can prevent further damage to the liver. Healthy diet and exercise can contribute to slowing the progression.",
+    parentIds: [27],
+    childIds: null,
     alternateNames: null,
   },
 ];
