@@ -107,7 +107,7 @@ export const mockData = [
     description:
       "To determine whether you have a cataract, your doctor will review your medical history and symptoms, and perform an eye examination. Your doctor may conduct several tests.",
     parentIds: [4],
-    childIds: [8, 9],
+    childIds: [8, 19],
     alternateNames: null,
   },
   {
@@ -116,7 +116,7 @@ export const mockData = [
     description:
       "A comprehensive eye exam. An eye exam that includes a complete history of your overall health and your eye health can help your eye care specialist diagnose the cause of your dry eyes.",
     parentIds: [4],
-    childIds: null,
+    childIds: [19],
     alternateNames: null,
   },
   {
@@ -129,11 +129,11 @@ export const mockData = [
     alternateNames: ["eye chart"],
   },
   {
-    conceptId: 8,
+    conceptId: 19,
     displayName: "Slit-lamp Examination",
     description:
       "A slit lamp allows your eye doctor to see the structures at the front of your eye under magnification. The microscope is called a slit lamp because it uses an intense line of light, a slit, to illuminate your cornea, iris, lens, and the space between your iris and cornea. The slit allows your doctor to view these structures in small sections, which makes it easier to detect any tiny abnormalities.",
-    parentIds: [6, 6],
+    parentIds: [6, 7],
     childIds: null,
     alternateNames: null,
   },

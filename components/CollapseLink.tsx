@@ -1,7 +1,7 @@
 // eslint-disable-file no-use-before-define
 
-import { useEffect, useState } from "react";
-import { Button, Collapse, Container, Paper, Title } from "@mantine/core";
+import { useState } from "react";
+import { Collapse, Container, Paper, Title } from "@mantine/core";
 import Link from "next/link";
 import React from "react";
 

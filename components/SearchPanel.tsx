@@ -28,7 +28,7 @@ export default function SearchPanel() {
 
   return (
     <>
-      <div style={{ maxWidth: "326px", margin: "auto" }}>
+      <div style={{ maxWidth: "359px", margin: "auto" }}>
         <Box>
           <Container
             my={"lg"}
