@@ -10,6 +10,8 @@ This app was built with Next.js, Node, React, TypeScript, and Mantine (for compo
 
 This app is hosted on Heroku: https://ontology-wiki-project.herokuapp.com
 
+The architectural diagram is hosted on Miro: https://miro.com/app/board/uXjVPJlXke8=/?share_link_id=944613759258
+
 ## Known Issues
 
 -The backend accesses an object, "mockData" which serves as the mockup database. CRUD actions are scaffolded but not yet fully implemented. The frontend services that call backend endpoints are all functional and will trigger success and error messages in the UI. However, the backend does not truly update the "mockData".
