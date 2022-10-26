@@ -25,8 +25,8 @@ export default function App({
           content="minimum-scale=1, initial-scale=1, width=device-width"
         />
         <meta
-          name="A wiki dashboard for clinical ontology."
-          content="this is a website"
+          name="description"
+          content="A wiki dashboard for clinical ontology."
         />
         <link rel="icon" href="/favicon.ico" />
       </Head>
