@@ -58,7 +58,7 @@
 export const mockData = [
   {
     conceptId: 1,
-    displayName: "Medical Ontology Wiki",
+    displayName: "Clinical Ontology Wiki",
     description:
       "Habits and environmental factors that lead to disease and and other medical issues.",
     parentIds: null,
