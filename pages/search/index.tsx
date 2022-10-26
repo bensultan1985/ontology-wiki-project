@@ -1,5 +1,3 @@
-// eslint-disable-file no-use-before-define
-
 import { Container, Title, UnstyledButton } from "@mantine/core";
 import Link from "next/link";
 import router from "next/router";
@@ -7,6 +5,7 @@ import { useEffect, useState } from "react";
 import SearchPanel from "../../components/SearchPanel";
 import { getConceptsByIds } from "../../services/services";
 import styles from "../../styles/Home.module.css";
+import { Concept } from "../../types";
 
 export default function Search() {
   const [sorted, setSorted] = useState<any>();
@@ -19,7 +18,7 @@ export default function Search() {
     try {
       const data = await getConceptsByIds(sorted);
       const queryObj = {};
-      data.forEach((concept: any) => {
+      data.forEach((concept: Concept) => {
         queryObj[concept.conceptId] = concept;
       });
       const sortedData = sorted
@@ -94,10 +93,10 @@ export default function Search() {
                 >
                   <UnstyledButton
                     mb={"sm"}
-                    onMouseOver={(e) =>
+                    onMouseOver={(e: any) =>
                       (e.currentTarget.style.backgroundColor = "whitesmoke")
                     }
-                    onMouseOut={(e) =>
+                    onMouseOut={(e: any) =>
                       (e.currentTarget.style.backgroundColor = "white")
                     }
                     key={i}
@@ -117,7 +116,7 @@ export default function Search() {
   );
 }
 
-Search.getInitialProps = (c) => {
+Search.getInitialProps = (c: any) => {
   return {
     id: String(c.query.id),
     key: String(c.query.id),

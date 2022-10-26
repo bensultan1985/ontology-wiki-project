@@ -1,8 +1,6 @@
-// eslint-disable-file no-use-before-define
-
 import { ConceptLink } from "./ConceptLink";
 
-export function RootConceptLink(props) {
+export function RootConceptLink(props: any) {
   const { concept } = props;
   return <ConceptLink concept={concept}></ConceptLink>;
 }

@@ -1,11 +1,10 @@
-// eslint-disable-file no-use-before-define
-
 import { Button, Modal, Table, Title } from "@mantine/core";
 import { useEffect, useState } from "react";
-import { getAllConcepts } from "../../services/services";
+import { deleteConcept, getAllConcepts } from "../../services/services";
 import { EditConceptModal } from "../EditConceptModal";
+import { showNotification } from "@mantine/notifications";
 
-export default function ConceptTable(props) {
+export default function ConceptTable(props: any) {
   const [concepts, setConcepts] = useState(null);
   const [rows, setRows] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -54,7 +53,27 @@ export default function ConceptTable(props) {
                 >
                   edit
                 </Button>
-                <Button variant="subtle">delete</Button>
+                <Button
+                  variant="subtle"
+                  onClick={async () => {
+                    try {
+                      const response = await deleteConcept(concept);
+                      showNotification({
+                        color: "green",
+                        title: response.message,
+                        message: "",
+                      });
+                    } catch (e) {
+                      showNotification({
+                        color: "red",
+                        title: "an error occurred",
+                        message: "",
+                      });
+                    }
+                  }}
+                >
+                  delete
+                </Button>
               </div>
             </td>
           </tr>

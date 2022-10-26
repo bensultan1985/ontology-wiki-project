@@ -1,6 +1,7 @@
 // eslint-disable-file no-use-before-define
 
 import { mockData } from "../../../../mockData";
+import { Concept } from "../../../../types";
 
 function handler(req: any, res: any) {
   switch (req.method) {
@@ -18,8 +19,8 @@ function handler(req: any, res: any) {
 }
 
 export function filterByConceptIds(data: any, ids: String[] | number[]) {
-  let concepts = [];
-  data.forEach((concept) => {
+  let concepts: Concept[] = [];
+  data.forEach((concept: Concept) => {
     ids.forEach((id) => {
       if (concept.conceptId == id) concepts.push(concept);
     });

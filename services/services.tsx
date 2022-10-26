@@ -40,28 +40,46 @@ export async function getSearchResults(queries: string[]) {
   return data;
 }
 
-export async function createConcept(data) {
-  const response = await fetch("/create-concept", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(data),
-  });
-  return response.json();
-}
-
-export async function updateConcept(data) {
+export async function createConcept(req: any) {
   try {
-    const response = await fetch("/update-concept", {
+    const response = await fetch("/api/create-concept", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(data),
+      body: JSON.stringify(req),
     });
-    const result = await response.json();
-    return result;
+    return response.json();
+  } catch (e) {
+    console.log(e);
+  }
+}
+
+export async function updateConcept(req: any) {
+  try {
+    const response = await fetch("/api/update-concept", {
+      method: "post",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(req),
+    });
+    return response.json();
+  } catch (e) {
+    console.log(e);
+  }
+}
+
+export async function deleteConcept(req: any) {
+  try {
+    const response = await fetch("/api/delete-concept", {
+      method: "post",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(req),
+    });
+    return response.json();
   } catch (e) {
     console.log(e);
   }

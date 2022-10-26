@@ -1,5 +1,3 @@
-// eslint-disable-file no-use-before-define
-
 import { AppProps } from "next/app";
 import Head from "next/head";
 import React from "react";
@@ -12,6 +10,8 @@ import {
 import { AppHeader } from "../components/AppHeader";
 import { AppFooter } from "../components/AppFooter";
 import { UserProvider } from "../context/UserProvider";
+import { NotificationsProvider } from "@mantine/notifications";
+
 export default function App({
   Component,
   pageProps: { theme, ...pageProps },
@@ -32,16 +32,18 @@ export default function App({
       </Head>
       <UserProvider>
         <MantineProvider withGlobalStyles withNormalizeCSS theme={theme}>
-          <AppShell
-            fixed={true}
-            style={{ background: "#f6f4ee" }}
-            header={<AppHeader></AppHeader>}
-            footer={<AppFooter></AppFooter>}
-          >
-            <Container style={{ background: "white", height: "100%" }}>
-              <Component {...pageProps} />
-            </Container>
-          </AppShell>
+          <NotificationsProvider autoClose={4000}>
+            <AppShell
+              fixed={true}
+              style={{ background: "#f6f4ee" }}
+              header={<AppHeader></AppHeader>}
+              footer={<AppFooter></AppFooter>}
+            >
+              <Container style={{ background: "white", height: "100%" }}>
+                <Component {...pageProps} />
+              </Container>
+            </AppShell>
+          </NotificationsProvider>
         </MantineProvider>
       </UserProvider>
     </>

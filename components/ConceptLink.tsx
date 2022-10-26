@@ -1,9 +1,7 @@
-// eslint-disable-file no-use-before-define
-
 import Link from "next/link";
 import router from "next/router";
 
-export function ConceptLink(props) {
+export function ConceptLink(props: any) {
   const { concept } = props;
   const route = "/concept/" + concept.conceptId;
   return (
@@ -11,7 +9,6 @@ export function ConceptLink(props) {
       <Link
         href={{
           pathname: route,
-          // query: concept.conceptId,
         }}
       >
         <a

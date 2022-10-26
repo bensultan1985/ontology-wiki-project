@@ -11,6 +11,13 @@
   align-items: center;
 }
 
+.index {
+  padding: 4rem 0;
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+}
+
 .footer {
   display: flex;
   flex: 1;

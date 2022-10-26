@@ -11,7 +11,7 @@ export default function SearchPanel() {
   async function search() {
     const data = await getSearchResults(searchTerm.split(" "));
     const queryObj = {};
-    data.forEach((result) => {
+    data.forEach((result: { id: number; matches: any[] }) => {
       queryObj[result.id] = result.matches;
     });
 

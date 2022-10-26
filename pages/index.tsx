@@ -22,7 +22,7 @@ const Home: NextPage = (props) => {
   if (user)
     return (
       <div className={styles.container}>
-        <main className={styles.main}>
+        <main className={styles.index}>
           <Container>
             <UserConsole></UserConsole>
           </Container>

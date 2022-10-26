@@ -1,5 +1,3 @@
-// eslint-disable-file no-use-before-define
-
 import {
   Box,
   Button,
@@ -15,18 +13,20 @@ import {
   getAllConcepts,
   updateConcept,
 } from "../services/services";
+import { Concept } from "../types";
+import { showNotification } from "@mantine/notifications";
 
-export function EditConceptModal(props) {
+export function EditConceptModal(props: any) {
   const { openModal, setOpenModal, concept } = props;
   const [alternateNamesSelect, setAlternateNamesSelect] = useState([]);
   const [allConcepts, setAllConcepts] = useState();
 
   //removes concept from list of possible parent concepts and child concepts
-  function filterConceptIds(currentConcept) {
+  function filterConceptIds(currentConcept: Concept) {
     return currentConcept.conceptId != concept.conceptId;
   }
 
-  function mapConceptIds(currentConcept) {
+  function mapConceptIds(currentConcept: Concept) {
     if (currentConcept.conceptId != concept.conceptId)
       return {
         label: currentConcept.conceptId,
@@ -69,12 +69,30 @@ export function EditConceptModal(props) {
         {allConcepts && (
           <form
             onSubmit={form.onSubmit(async (values) => {
-              if (values.id == "none") {
-                const response = await createConcept(values);
-                console.log(response);
-              } else {
-                const response = await updateConcept(values);
-                console.log(response);
+              try {
+                console.log("form values: ", values);
+                if (values.id == "none") {
+                  const response = await createConcept(values);
+                  showNotification({
+                    color: "green",
+                    title: response.message,
+                    message: "",
+                  });
+                } else {
+                  console.log("form values: ", values);
+                  const response = await updateConcept(values);
+                  showNotification({
+                    color: "green",
+                    title: response.message,
+                    message: "",
+                  });
+                }
+              } catch (e) {
+                showNotification({
+                  color: "red",
+                  title: "an error occurred",
+                  message: "",
+                });
               }
               setOpenModal(false);
             })}
@@ -116,6 +134,7 @@ export function EditConceptModal(props) {
               getCreateLabel={(query) => `+ Create ${query}`}
               onCreate={(query) => {
                 const item = { value: query, label: query };
+                //TODO: fix alternate names select
                 setAlternateNamesSelect((current) => [...current, item]);
                 return item;
               }}

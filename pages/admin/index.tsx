@@ -32,10 +32,8 @@ const Admin: NextPage = (props) => {
           openModal={openModal}
           setOpenModal={setOpenModal}
         ></EditConceptModal>
-        {/* Modal content */}
       </Modal>
       <main className={styles.main}>
-        {/* <div>admin</div> */}
         {user?.role == "admin" ? (
           <div>
             <Container m={0} style={{ textAlign: "right", width: "100%" }}>

@@ -1,23 +1,16 @@
-// eslint-disable-file no-use-before-define
-
 import * as React from "react";
 import { useEffect, useState } from "react";
+import { Concept, RenderTree } from "../types";
 import { CollapseLink } from "./CollapseLink";
 
-interface RenderTree {
-  id: number;
-  name: string;
-  children?: readonly RenderTree[];
-}
-
-export default function BrowseTree(props) {
+export default function BrowseTree(props: any) {
   const { concepts } = props;
   const [conceptObj, setConceptObj] = useState<any>();
   const [treeData, setTreeData] = useState<RenderTree | null>();
 
-  function createNode(childIds) {
+  function createNode(childIds: number[] | null) {
     if (childIds == null || childIds == undefined) return;
-    let retArr = [];
+    let retArr: Object[] = [];
 
     childIds.forEach((id) => {
       if (conceptObj) {
@@ -29,8 +22,8 @@ export default function BrowseTree(props) {
   }
 
   function createRenderTree() {
-    let retArr = [];
-    concepts.forEach((concept) => {
+    let retArr: RenderTree[] = [];
+    concepts.forEach((concept: Concept) => {
       if (concept.parentIds == null) {
         const currentConcept = conceptObj?.[concept.conceptId];
         retArr.push(currentConcept);
@@ -46,8 +39,8 @@ export default function BrowseTree(props) {
   }
 
   function createConceptObj() {
-    const obj = {};
-    concepts.forEach((concept) => {
+    const obj: any = {};
+    concepts.forEach((concept: Concept) => {
       obj[concept.conceptId] = {
         id: concept.conceptId.toString(),
         name: concept.displayName,
@@ -63,7 +56,7 @@ export default function BrowseTree(props) {
     if (conceptObj && !treeData) createRenderTree();
   }, [conceptObj, treeData]);
 
-  const renderTree = (nodes: RenderTree, count = 0) => {
+  const renderTree = (nodes: RenderTree, count: number = 0) => {
     return (
       <CollapseLink
         key={nodes.id}
@@ -71,9 +64,7 @@ export default function BrowseTree(props) {
         label={nodes.name}
         count={count}
         content={
-          nodes &&
-          nodes?.children?.length >= 1 &&
-          Array.isArray(nodes?.children)
+          nodes && Array.isArray(nodes?.children)
             ? nodes?.children.map((node) => renderTree(node, count + 1))
             : null
         }
@@ -86,15 +77,7 @@ export default function BrowseTree(props) {
   return (
     <>
       {treeData && (
-        <div
-          aria-label="rich object"
-          //   defaultCollapseIcon={<ExpandMoreIcon />}
-          //   defaultExpanded={["root"]}
-          //   defaultExpandIcon={<ChevronRightIcon />}
-          //   sx={{ height: 110, flexGrow: 1, maxWidth: 400, overflowY: "auto" }}
-        >
-          {renderTree(treeData)}
-        </div>
+        <div style={{ padding: "0 4rem" }}>{renderTree(treeData)}</div>
       )}
     </>
   );

@@ -1,31 +1,64 @@
-// eslint-disable-file no-use-before-define
-
 import { useState } from "react";
-import { Collapse, Container, Paper, Title } from "@mantine/core";
+import { Button, Collapse, Container, Paper, Title } from "@mantine/core";
 import Link from "next/link";
 import React from "react";
 
-export function CollapseLink(props) {
+export function CollapseLink(props: any) {
   const { nodeId, label, content, count, children } = props;
   const [opened, setOpened] = useState(false);
 
   return (
-    <div>
+    <div style={{ width: "100%" }}>
       {count != 0 ? (
-        <Container>
-          <Link href={"/concept/" + nodeId}>
-            <a style={{ cursor: "pointer" }}>{label}</a>
-          </Link>
+        <Container style={{ width: "100%" }}>
+          {children && (
+            <span onClick={() => setOpened((o) => !o)}>
+              <span style={{ marginRight: "10px", cursor: "pointer" }}>
+                {opened &&
+                  (count == 1 ? (
+                    <Button m="xs" py={0} px="xs" size="xs">
+                      collapse
+                    </Button>
+                  ) : (
+                    <Button m="xs" py={0} px="xs" size="xs">
+                      -
+                    </Button>
+                  ))}
+                {!opened &&
+                  (count == 1 ? (
+                    <Button m="xs" py={0} px="xs" size="xs">
+                      expand
+                    </Button>
+                  ) : (
+                    <Button m="xs" py={0} px="xs" size="xs">
+                      +
+                    </Button>
+                  ))}
+              </span>
+            </span>
+          )}
+          {!children && (
+            <div
+              style={{
+                marginBottom: "12px",
+                padding: "12px",
+                paddingLeft: "34px",
+              }}
+            >
+              🔵{" "}
+              <Link href={"/concept/" + nodeId}>
+                <a style={{ cursor: "pointer" }}>{label}</a>
+              </Link>
+            </div>
+          )}
+          {children && (
+            <Link href={"/concept/" + nodeId}>
+              <a style={{ cursor: "pointer" }}>{label}</a>
+            </Link>
+          )}
           {children ? (
             <span>
-              <span onClick={() => setOpened((o) => !o)}>
-                <span style={{ marginLeft: "30px", cursor: "pointer" }}>
-                  {opened && "-" + (count == 1 ? " (collapse)" : "")}
-                  {!opened && "+" + (count == 1 ? " (expand)" : "")}
-                </span>
-              </span>
-
-              <Collapse ml={"lg"} in={opened}>
+              <Collapse ml={"xl"} in={opened}>
                 {content}
               </Collapse>
             </span>

@@ -1,7 +1,7 @@
-// eslint-disable-file no-use-before-define
-
+import { showNotification } from "@mantine/notifications";
 import { Button } from "@mantine/core";
 import { useUser } from "../context/UserProvider";
+
 export default function SignInMockUp() {
   const { user, setUser } = useUser();
   if (user && user.role == "user") {
@@ -11,13 +11,18 @@ export default function SignInMockUp() {
         <Button
           mt={3}
           variant="filled"
-          onClick={() =>
+          onClick={() => {
             setUser({
               email: "admin@test.com",
               name: "admin",
               role: "admin",
-            })
-          }
+            });
+            showNotification({
+              color: "green",
+              title: "you are now logged in as 'admin'",
+              message: "",
+            });
+          }}
         >
           sign in as admin
         </Button>
@@ -30,13 +35,18 @@ export default function SignInMockUp() {
         <Button
           mt={3}
           variant="filled"
-          onClick={() =>
+          onClick={() => {
             setUser({
               email: "user@test.com",
               name: "user",
               role: "user",
-            })
-          }
+            });
+            showNotification({
+              color: "green",
+              title: "you are now logged in as 'user'",
+              message: "",
+            });
+          }}
         >
           sign in as user
         </Button>

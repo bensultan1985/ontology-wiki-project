@@ -1,5 +1,3 @@
-// eslint-disable-file no-use-before-define
-
 import { Anchor, Grid, Header, MediaQuery, Title } from "@mantine/core";
 import Link from "next/link";
 import { useRouter } from "next/router";
@@ -50,7 +48,6 @@ export function AppHeader() {
                   style={{
                     textAlign: "left",
                     float: "left",
-                    // width: "100%",
                     display: "inline-block",
                   }}
                 >

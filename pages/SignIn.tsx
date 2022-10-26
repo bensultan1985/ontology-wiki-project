@@ -1,5 +1,3 @@
-// eslint-disable-file no-use-before-define
-
 import {
   TextInput,
   Button,
@@ -16,7 +14,6 @@ const emailValidityBasic = /^\S+@\S+$/;
 const emailValidityComprehensive =
   /^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
 export default function SignIn() {
-  // const theme = useMantineTheme();
   const [checked, setChecked] = useState(false);
   const form = useForm({
     initialValues: {
