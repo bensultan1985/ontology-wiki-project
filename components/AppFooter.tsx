@@ -1,3 +1,5 @@
+// eslint-disable-file no-use-before-define
+
 import { Footer, Text, Anchor } from "@mantine/core";
 
 export function AppFooter() {

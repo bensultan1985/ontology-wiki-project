@@ -1,3 +1,5 @@
+// eslint-disable-file no-use-before-define
+
 import { mockData } from "../../../../mockData";
 
 function handler(req: any, res: any) {
@@ -17,11 +19,11 @@ function handler(req: any, res: any) {
   }
 }
 
-export function searchFor(mockData, query: string) {
+export function searchFor(mockData: any[], query: any) {
   //NOTE - rough mockup of funtionality of SQL's CHARINDEX() function - I am aware that this would need to be refined, as there are many exceptions at the moment
   const matches = [];
   mockData.forEach((concept) => {
-    let matchArr: [] = [];
+    let matchArr: string[] = [];
     const str =
       concept.description +
       " " +

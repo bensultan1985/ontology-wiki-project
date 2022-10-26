@@ -1,3 +1,5 @@
+// eslint-disable-file no-use-before-define
+
 import Link from "next/link";
 import router from "next/router";
 

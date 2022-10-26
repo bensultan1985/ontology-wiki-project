@@ -1,3 +1,5 @@
+// eslint-disable-file no-use-before-define
+
 import {
   Box,
   Button,
@@ -24,16 +26,17 @@ export function EditConceptModal(props) {
     return currentConcept.conceptId != concept.conceptId;
   }
 
+  function mapConceptIds(currentConcept) {
+    if (currentConcept.conceptId != concept.conceptId)
+      return {
+        label: currentConcept.conceptId,
+        value: currentConcept.conceptId,
+      };
+  }
+
   async function getConcepts() {
     try {
       const response = await getAllConcepts();
-      function mapConceptIds(currentConcept) {
-        if (currentConcept.conceptId != concept.conceptId)
-          return {
-            label: currentConcept.conceptId,
-            value: currentConcept.conceptId,
-          };
-      }
       const filteredArr = response.filter(filterConceptIds);
       setAllConcepts(filteredArr.map(mapConceptIds));
     } catch (e) {

@@ -1,3 +1,5 @@
+// eslint-disable-file no-use-before-define
+
 import { mockData } from "../../../mockData";
 export default handler;
 

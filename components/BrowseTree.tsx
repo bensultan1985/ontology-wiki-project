@@ -1,3 +1,5 @@
+// eslint-disable-file no-use-before-define
+
 import * as React from "react";
 import { useEffect, useState } from "react";
 import { CollapseLink } from "./CollapseLink";
@@ -10,16 +12,18 @@ interface RenderTree {
 
 export default function BrowseTree(props) {
   const { concepts } = props;
-  const [conceptObj, setConceptObj] = useState();
-  const [treeData, setTreeData] = useState()<RenderTree>;
+  const [conceptObj, setConceptObj] = useState<any>();
+  const [treeData, setTreeData] = useState<RenderTree | null>();
 
   function createNode(childIds) {
     if (childIds == null || childIds == undefined) return;
     let retArr = [];
 
     childIds.forEach((id) => {
-      conceptObj[id].children = createNode(conceptObj[id].childIds);
-      retArr.push(conceptObj[id]);
+      if (conceptObj) {
+        conceptObj[id].children = createNode(conceptObj[id].childIds);
+        retArr.push(conceptObj[id]);
+      }
     });
     return retArr;
   }

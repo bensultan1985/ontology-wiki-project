@@ -1,3 +1,5 @@
+// eslint-disable-file no-use-before-define
+
 import { mockData } from "../../mockData";
 
 export default handler;
@@ -15,6 +17,6 @@ function handler(req: any, res: any) {
     }
     default:
       console.log(req.method, "method");
-      return res.end(`Method ${req.method} Not Allowed`);
+    // return res.send(`Method ${req.method} Not Allowed`);
   }
 }

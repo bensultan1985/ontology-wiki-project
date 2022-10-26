@@ -1,3 +1,5 @@
+// eslint-disable-file no-use-before-define
+
 export async function getConceptById(id: string | number) {
   const response = await fetch("/api/get-concept-by-id/" + id, {
     headers: { "Content-Type": "application/json" },
@@ -14,7 +16,7 @@ export async function getConceptsByParentId(parentId: string) {
   return data;
 }
 
-export async function getConceptsByIds(ids: String[] | number[]) {
+export async function getConceptsByIds(ids: any) {
   const response = await fetch("/api/get-concepts-by-ids/" + ids, {
     headers: { "Content-Type": "application/json" },
   });
@@ -30,7 +32,7 @@ export async function getAllConcepts() {
   return data;
 }
 
-export async function getSearchResults(queries: string) {
+export async function getSearchResults(queries: string[]) {
   const response = await fetch("/api/get-search-results/" + queries, {
     headers: { "Content-Type": "application/json" },
   });

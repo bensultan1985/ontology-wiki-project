@@ -1,4 +1,6 @@
-import { Box, Button, Container, Modal } from "@mantine/core";
+// eslint-disable-file no-use-before-define
+
+import { Button, Container, Modal } from "@mantine/core";
 import { NextPage } from "next";
 import { useEffect, useState } from "react";
 import ConceptTable from "../../components/admin/ConceptTable";

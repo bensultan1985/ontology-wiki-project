@@ -1,3 +1,5 @@
+// eslint-disable-file no-use-before-define
+
 import { Anchor, Grid, Header, MediaQuery, Title } from "@mantine/core";
 import Link from "next/link";
 import { useRouter } from "next/router";

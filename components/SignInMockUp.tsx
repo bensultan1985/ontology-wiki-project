@@ -1,3 +1,5 @@
+// eslint-disable-file no-use-before-define
+
 import { Button } from "@mantine/core";
 import { useUser } from "../context/UserProvider";
 export default function SignInMockUp() {

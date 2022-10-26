@@ -1,3 +1,5 @@
+// eslint-disable-file no-use-before-define
+
 import { Button, Container, TextInput } from "@mantine/core";
 import { useRouter } from "next/router";
 import { useState } from "react";

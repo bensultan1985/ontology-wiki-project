@@ -1,3 +1,5 @@
+// eslint-disable-file no-use-before-define
+
 import type { NextPage } from "next";
 import styles from "../styles/Home.module.css";
 import { Container } from "@mantine/core";

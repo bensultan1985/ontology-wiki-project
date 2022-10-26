@@ -1,3 +1,5 @@
+// eslint-disable-file no-use-before-define
+
 import { mockData } from "../../../../mockData";
 
 function handler(req: any, res: any) {
@@ -16,12 +18,17 @@ function handler(req: any, res: any) {
 }
 
 function filterByParentId(
-  data: [
-    { conceptId: number; displayName: string; parentIds: []; childIds: [] }
-  ],
+  data: {
+    conceptId: number;
+    displayName: string;
+    description: string;
+    parentIds: number[];
+    childIds: number[];
+    alternateNames: string[];
+  }[],
   parentId: number | null | ""
 ) {
-  let results: [] = [];
+  let results: any[] = [];
   data.forEach((concept) => {
     if (concept.parentIds && parentId) {
       concept.parentIds.forEach((conceptParentId) => {

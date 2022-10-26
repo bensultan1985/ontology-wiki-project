@@ -1,3 +1,5 @@
+// eslint-disable-file no-use-before-define
+
 import { Button, Modal, Table, Title } from "@mantine/core";
 import { useEffect, useState } from "react";
 import { getAllConcepts } from "../../services/services";

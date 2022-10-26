@@ -1,3 +1,5 @@
+// eslint-disable-file no-use-before-define
+
 import { AppProps } from "next/app";
 import Head from "next/head";
 import React from "react";

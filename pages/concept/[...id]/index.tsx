@@ -1,3 +1,5 @@
+// eslint-disable-file no-use-before-define
+
 import { NextPage } from "next";
 import { useRouter } from "next/router";
 import styles from "../../../styles/Home.module.css";
@@ -8,7 +10,7 @@ import { ConceptLink } from "../../../components/ConceptLink";
 import { EditConceptModal } from "../../../components/EditConceptModal";
 import { useUser } from "../../../context/UserProvider";
 const Concept: NextPage = (props) => {
-  const [concept, setConcept] = useState();
+  const [concept, setConcept] = useState<any>();
   const [conceptParents, setConceptParents] = useState([]);
   const [conceptChildren, setConceptChildren] = useState([]);
   const [isLoading, setIsLoading] = useState(true);

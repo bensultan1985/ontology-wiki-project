@@ -1,3 +1,5 @@
+// eslint-disable-file no-use-before-define
+
 import { mockData } from "../../mockData";
 
 function handler(req: any, res: any) {

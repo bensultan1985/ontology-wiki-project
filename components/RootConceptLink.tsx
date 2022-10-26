@@ -1,3 +1,5 @@
+// eslint-disable-file no-use-before-define
+
 import { ConceptLink } from "./ConceptLink";
 
 export function RootConceptLink(props) {

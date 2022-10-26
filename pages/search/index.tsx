@@ -1,3 +1,5 @@
+// eslint-disable-file no-use-before-define
+
 import { Container, Title, UnstyledButton } from "@mantine/core";
 import Link from "next/link";
 import router from "next/router";
@@ -7,20 +9,22 @@ import { getConceptsByIds } from "../../services/services";
 import styles from "../../styles/Home.module.css";
 
 export default function Search() {
-  const [sorted, setSorted] = useState();
-  const [concepts, setConcepts] = useState();
+  const [sorted, setSorted] = useState<any>();
+  const [concepts, setConcepts] = useState<any>();
   const [isLoading, setIsLoading] = useState(true);
-  const [query, setQuery] = useState();
-  const [resetQuery, setResetQuery] = useState(false);
+  const [query, setQuery] = useState<any>();
+  const [resetQuery, setResetQuery] = useState<any>(false);
 
   async function getConcepts() {
     try {
       const data = await getConceptsByIds(sorted);
       const queryObj = {};
-      data.forEach((concept) => {
+      data.forEach((concept: any) => {
         queryObj[concept.conceptId] = concept;
       });
-      const sortedData = sorted.map((element) => queryObj[element]);
+      const sortedData = sorted
+        ? sorted.map((element) => queryObj[element])
+        : null;
       setConcepts(sortedData);
     } catch (e) {
       console.log(e);
@@ -46,8 +50,22 @@ export default function Search() {
           matches: router.query[key],
         }));
         let sortedArr = queryArr.sort((a, b) => {
-          if (parseInt(a.matches) > parseInt(b.matches)) return -1;
-          return true;
+          let aValue = a.matches;
+          let bValue = b.matches;
+
+          if (typeof aValue === "string") {
+            aValue = aValue.toUpperCase();
+          }
+          if (typeof bValue === "string") {
+            bValue = bValue.toUpperCase();
+          }
+
+          if (aValue >= bValue) {
+            return -1;
+          }
+          if (aValue < bValue) {
+            return 1;
+          }
         });
         let sortedIdsArr = sortedArr.map((query) => query.id);
         setSorted(sortedIdsArr);

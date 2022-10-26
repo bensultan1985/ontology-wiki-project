@@ -1,3 +1,5 @@
+// eslint-disable-file no-use-before-define
+
 import { Box, Button, Container, TextInput } from "@mantine/core";
 import { useState } from "react";
 import { getSearchResults } from "../services/services";
@@ -26,7 +28,7 @@ export default function SearchPanel() {
 
   return (
     <>
-      <div style={{ maxWidth: "326px" }}>
+      <div style={{ maxWidth: "326px", margin: "auto" }}>
         <Box>
           <Container
             my={"lg"}
