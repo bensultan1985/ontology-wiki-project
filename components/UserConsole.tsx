@@ -27,7 +27,7 @@ export function UserConsole() {
   return (
     <div>
       <div style={{ textAlign: "center" }}>
-        <Title>Clinincal Ontology Wiki</Title>
+        <Title>Clinical Ontology Wiki</Title>
         <div style={{ width: "100%" }}>
           <SearchPanel></SearchPanel>
           <Divider mb="xl"></Divider>
