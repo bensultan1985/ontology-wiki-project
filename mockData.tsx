@@ -285,7 +285,7 @@ export const mockData = [
     displayName: "Laser Surgery",
     description:
       "Surgeons can use advanced equipment to perform seveal kinds of laser surgeries to improve vision. This includes procedures to remove cataracts, as well as cosmetic procedures such as LASIK.",
-    parentIds: [21],
+    parentIds: [21, 22],
     childIds: null,
     alternateNames: null,
   },
