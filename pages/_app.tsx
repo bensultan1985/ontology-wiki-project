@@ -11,11 +11,12 @@ import { AppHeader } from "../components/AppHeader";
 import { AppFooter } from "../components/AppFooter";
 import { UserProvider } from "../context/UserProvider";
 import { NotificationsProvider } from "@mantine/notifications";
+import { SessionProvider } from "next-auth/react";
 
 export default function App({
   Component,
-  pageProps: { theme, ...pageProps },
-}: AppProps<{ theme: MantineThemeOverride }>) {
+  pageProps: { theme, session, ...pageProps },
+}: AppProps<{ theme: MantineThemeOverride; session }>) {
   return (
     <>
       <Head>
@@ -30,22 +31,24 @@ export default function App({
         />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <UserProvider>
-        <MantineProvider withGlobalStyles withNormalizeCSS theme={theme}>
-          <NotificationsProvider autoClose={4000}>
-            <AppShell
-              fixed={true}
-              style={{ background: "#f6f4ee" }}
-              header={<AppHeader></AppHeader>}
-              footer={<AppFooter></AppFooter>}
-            >
-              <Container style={{ background: "white", height: "100%" }}>
-                <Component {...pageProps} />
-              </Container>
-            </AppShell>
-          </NotificationsProvider>
-        </MantineProvider>
-      </UserProvider>
+      <SessionProvider session={session}>
+        <UserProvider>
+          <MantineProvider withGlobalStyles withNormalizeCSS theme={theme}>
+            <NotificationsProvider autoClose={4000}>
+              <AppShell
+                fixed={true}
+                style={{ background: "#f6f4ee" }}
+                header={<AppHeader></AppHeader>}
+                footer={<AppFooter></AppFooter>}
+              >
+                <Container style={{ background: "white", height: "100%" }}>
+                  <Component {...pageProps} />
+                </Container>
+              </AppShell>
+            </NotificationsProvider>
+          </MantineProvider>
+        </UserProvider>
+      </SessionProvider>
     </>
   );
 }

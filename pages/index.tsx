@@ -14,9 +14,6 @@ const Home: NextPage = (props) => {
   const router = useRouter();
 
   useEffect(() => {
-    if (!user && !isLoading) {
-      router.push("/SignIn");
-    }
     setIsLoading(false);
   }, [user, isLoading]);
   if (user)

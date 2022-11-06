@@ -11,14 +11,13 @@ export function ConceptLink(props: any) {
           pathname: route,
         }}
       >
-        <a
-          href={route}
+        <span
           onClick={() => {
             router.push(route);
           }}
         >
           {concept.displayName}
-        </a>
+        </span>
       </Link>
     </div>
   );
