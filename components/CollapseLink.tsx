@@ -47,13 +47,13 @@ export function CollapseLink(props: any) {
             >
               🔵{" "}
               <Link href={"/concept/" + nodeId}>
-                <a style={{ cursor: "pointer" }}>{label}</a>
+                <span style={{ cursor: "pointer" }}>{label}</span>
               </Link>
             </div>
           )}
           {children && (
             <Link href={"/concept/" + nodeId}>
-              <a style={{ cursor: "pointer" }}>{label}</a>
+              <span style={{ cursor: "pointer" }}>{label}</span>
             </Link>
           )}
           {children ? (
