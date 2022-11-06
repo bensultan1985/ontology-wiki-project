@@ -1,5 +1,6 @@
 import { Divider, Title } from "@mantine/core";
 import { useEffect, useState } from "react";
+import textConfig from "../configuration";
 import { getAllConcepts } from "../services/services";
 import BrowseTree from "./BrowseTree";
 import SearchPanel from "./SearchPanel";
@@ -27,7 +28,7 @@ export function UserConsole() {
   return (
     <div>
       <div style={{ textAlign: "center" }}>
-        <Title>Clinical Ontology Wiki</Title>
+        <Title>{textConfig.siteName}</Title>
         <div style={{ width: "100%" }}>
           <SearchPanel></SearchPanel>
           <Divider mb="xl"></Divider>

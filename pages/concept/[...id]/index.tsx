@@ -7,6 +7,8 @@ import { Container, Modal, SimpleGrid, Title } from "@mantine/core";
 import { ConceptLink } from "../../../components/ConceptLink";
 import { EditConceptModal } from "../../../components/EditConceptModal";
 import { useUser } from "../../../context/UserProvider";
+import textConfig from "../../../configuration/index";
+
 const Concept: NextPage = (props) => {
   const [concept, setConcept] = useState<any>();
   const [conceptParents, setConceptParents] = useState([]);
@@ -136,7 +138,7 @@ const Concept: NextPage = (props) => {
               <Container mb={60}>
                 {conceptChildren && conceptChildren.length > 0 && (
                   <Container pb={"lg"}>
-                    <Title order={5}>learn more:</Title>
+                    <Title order={5}>{textConfig.childLabel}:</Title>
                     {conceptChildren.map((concept, i) => (
                       <ConceptLink concept={concept} key={i}></ConceptLink>
                     ))}
@@ -144,7 +146,7 @@ const Concept: NextPage = (props) => {
                 )}
                 {conceptParents && conceptParents.length > 0 && (
                   <Container>
-                    <Title order={5}>related topics:</Title>
+                    <Title order={5}>{textConfig.parentLabel}:</Title>
                     {conceptParents &&
                       conceptParents.map((concept, i) => (
                         <ConceptLink concept={concept} key={i}></ConceptLink>
