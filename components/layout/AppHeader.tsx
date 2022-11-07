@@ -1,8 +1,8 @@
 import { Anchor, Grid, Header, MediaQuery, Title } from "@mantine/core";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import SearchBar from "./SearchBar";
-import SignInMockUp from "./SignInMockUp";
+import SearchBar from "../search/SearchBar";
+import SignInMockUp from "../SignInMockUp";
 
 export function AppHeader() {
   const router = useRouter();

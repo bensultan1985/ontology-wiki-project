@@ -1,7 +1,7 @@
 import * as React from "react";
 import { useEffect, useState } from "react";
 import { Concept, RenderTree } from "../types";
-import { CollapseLink } from "./CollapseLink";
+import { CollapseLink } from "./link/CollapseLink";
 
 export default function BrowseTree(props: any) {
   const { concepts } = props;

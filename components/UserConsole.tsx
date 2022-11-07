@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import textConfig from "../configuration";
 import { getAllConcepts } from "../services/services";
 import BrowseTree from "./BrowseTree";
-import SearchPanel from "./SearchPanel";
+import SearchPanel from "./search/SearchPanel";
 
 export function UserConsole() {
   const [concepts, setConcepts] = useState(null);

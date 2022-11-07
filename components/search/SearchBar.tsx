@@ -1,7 +1,7 @@
 import { Button, Container, TextInput } from "@mantine/core";
 import { useRouter } from "next/router";
 import { useState } from "react";
-import { getSearchResults } from "../services/services";
+import { getSearchResults } from "../../services/services";
 
 export default function SearchBar() {
   const [searchTerm, setSearchTerm] = useState("");

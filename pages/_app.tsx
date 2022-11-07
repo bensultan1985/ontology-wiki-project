@@ -1,5 +1,4 @@
 import { AppProps } from "next/app";
-import Head from "next/head";
 import React from "react";
 import {
   AppShell,
@@ -7,10 +6,11 @@ import {
   MantineProvider,
   MantineThemeOverride,
 } from "@mantine/core";
-import { AppHeader } from "../components/AppHeader";
-import { AppFooter } from "../components/AppFooter";
+import { AppHeader } from "../components/layout/AppHeader";
+import { AppFooter } from "../components/layout/AppFooter";
 import { UserProvider } from "../context/UserProvider";
 import { NotificationsProvider } from "@mantine/notifications";
+import MetaData from "../components/meta/MetaData";
 
 export default function App({
   Component,
@@ -18,18 +18,7 @@ export default function App({
 }: AppProps<{ theme: MantineThemeOverride }>) {
   return (
     <>
-      <Head>
-        <title>OntoInfo</title>
-        <meta
-          name="viewport"
-          content="minimum-scale=1, initial-scale=1, width=device-width"
-        />
-        <meta
-          name="description"
-          content="A wiki dashboard for clinical ontology."
-        />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
+      <MetaData></MetaData>
       <UserProvider>
         <MantineProvider withGlobalStyles withNormalizeCSS theme={theme}>
           <NotificationsProvider autoClose={4000}>

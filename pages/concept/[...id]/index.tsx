@@ -4,7 +4,7 @@ import styles from "../../../styles/Home.module.css";
 import { getConceptById, getConceptsByIds } from "../../../services/services";
 import { useEffect, useState } from "react";
 import { Container, Modal, SimpleGrid, Title } from "@mantine/core";
-import { ConceptLink } from "../../../components/ConceptLink";
+import { ConceptLink } from "../../../components/link/ConceptLink";
 import { EditConceptModal } from "../../../components/EditConceptModal";
 import { useUser } from "../../../context/UserProvider";
 import textConfig from "../../../configuration/index";
