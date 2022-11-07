@@ -2,7 +2,7 @@
 
 import { Box, Button, Container, TextInput } from "@mantine/core";
 import { useState } from "react";
-import { getSearchResults } from "../services/services";
+import { getSearchResults } from "../../services/services";
 import { useRouter } from "next/router";
 export default function SearchPanel() {
   const [searchTerm, setSearchTerm] = useState("");

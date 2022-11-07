@@ -2,7 +2,7 @@ import { Container, Title, UnstyledButton } from "@mantine/core";
 import Link from "next/link";
 import router from "next/router";
 import { useEffect, useState } from "react";
-import SearchPanel from "../../components/SearchPanel";
+import SearchPanel from "../../components/search/SearchPanel";
 import { getConceptsByIds } from "../../services/services";
 import styles from "../../styles/Home.module.css";
 import { Concept } from "../../types";

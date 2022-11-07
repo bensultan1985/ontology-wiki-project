@@ -1,6 +1,6 @@
 import { showNotification } from "@mantine/notifications";
 import { Button } from "@mantine/core";
-import { useUser } from "../context/UserProvider";
+import { useUser } from "../../context/UserProvider";
 
 export default function SignInMockUp() {
   const { user, setUser } = useUser();

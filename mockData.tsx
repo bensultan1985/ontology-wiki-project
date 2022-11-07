@@ -316,4 +316,20 @@ export const mockData = [
     childIds: null,
     alternateNames: null,
   },
+  // {
+  //   conceptId: 30,
+  //   displayName: "second root concept",
+  //   description: "example root concept",
+  //   parentIds: null,
+  //   childIds: [31],
+  //   alternateNames: null,
+  // },
+  // {
+  //   conceptId: 31,
+  //   displayName: "Child of Second Root Concept",
+  //   description: "this is a child of the second root concept",
+  //   parentIds: [30],
+  //   childIds: null,
+  //   alternateNames: null,
+  // },
 ];
